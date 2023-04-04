@@ -10,10 +10,9 @@ body{
     margin-top: 10%;
     margin-bottom: 1px
   }
-  button {
+button {
     background-color:white;;
     border-radius: 8px;
-    color: #fff;
     cursor: pointer;
     font-size: 1.2em;
     letter-spacing: 0.21px;
@@ -30,10 +29,17 @@ body{
 
 label {
   color: white;
+  display: blocl;
+  text-align: center;
 }
-.input-group {
-    text-align: center;
-    }
+<label for="email" class="center-label">Email</label>
+<label for="password" class="center-label">Password</label>
+
+.center-label {
+  display: block;
+  text-align: center;
+}
+
 form {
         position:relative;
         padding: 12px 35px;
