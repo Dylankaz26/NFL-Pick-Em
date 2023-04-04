@@ -32,13 +32,6 @@ label {
   display: blocl;
   text-align: center;
 }
-<label for="email" class="center-label">Email</label>
-<label for="password" class="center-label">Password</label>
-
-.center-label {
-  display: block;
-  text-align: center;
-}
 
 form {
         position:relative;
