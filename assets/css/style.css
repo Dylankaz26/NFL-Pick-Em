@@ -1,48 +1,17 @@
-body{
-    background-color: #0b0205;
-  }
-  
-  h1 {
-    color: gray;
-    text-align: center;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 500%;
-    margin-top: 10%;
-    margin-bottom: 1px
-  }
-button {
-    background-color:white;;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.2em;
-    letter-spacing: 0.21px;
-    line-height: 16px;
-    max-width: 255px;
-    padding: 20px 52px;
-    text-align: center;
-    transition-duration: 0.15s;
-    transition-property: background-color;
-    transition-timing-function: linear;
-    margin-top: 0.6em;
-    float: right;
-  }
+body {
+    --color-primary: black;
+    --color-primary-dark: #007f67;
+    --color-secondary: #252c6a;
+    --color-error: #cc3333;
+    --color-success: #4bb544;
+    --border-radius: 4px;
 
-label {
-  color: white;
-  display: blocl;
-  text-align: center;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    font-size: 10px;
+    background: url(./asstes/images/NFLbackground.jpeg);
+    background-size: cover;
 }
-
-form {
-        position:relative;
-        padding: 12px 35px;
-        margin: 5%;
-        background: #820404;
-        font-size: 17px;
-        font-weight: 500;
-        color: #0b0205;
-        border: 3px solid #820404;
-        border-radius: 8px;
-        box-shadow: 0 0 0 #820404;
-        transition: all .3s ease-in-out;
- }
