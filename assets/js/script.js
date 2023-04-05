@@ -1,32 +1,54 @@
-var form = document.querySelector("form");
+function setFormMessage(formElement, type, message) {
+  const messageElement = formElement.querySelector(".form__message");
 
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
+  messageElement.textContent = message;
+  messageElement.classList.remove("form_message--success", "form__message--error");
+  messageElement.classList.add(`form__message--${type}`);
+}
 
-  var username = document.querySelector("#username").value;
-  var password = document.querySelector("#password").value;
+function setInputError(inputElement, message) {
+  inputElement.classList.add("form__input--error");
+  inputElement.parentElement.querySelector(".form__input-error-message").textContent = message;
+}
 
-  var data = {
-    username: username,
-    password: password
-  };
+function clearInputError(inputElement) {
+  inputElement.classList.remove("form__input--error");
+  inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
+}
 
-  fetch("/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  })
-  .then(function(response) {
-    if (response.ok) {
-      // Redirect the user to the home page or another authenticated page
-      window.location.href = "/home";
-    } else {
-      // Display an error message
-      var message = document.createElement("div");
-      message.textContent = "Incorrect username or password";
-      document.querySelector("form").appendChild(message);
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.querySelector("#login");
+  const createAccountForm = document.querySelector("#createAccount");
+
+  document.querySelector("#linkCreateAccount").addEventListener("click", e => {
+    e.preventDefault();
+    loginForm.classList.add("form--hidden");
+    createAccountForm.classList.remove("form--hidden");
+  });
+
+  document.querySelector("#linkLogin").addEventListener("click", e => {
+    e.preventDefault();
+    loginForm.classList.remove("form--hidden");
+    createAccountForm.classList.add("form--hidden");
+    
+  });
+
+  loginForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    // Perform your AJAX/Fetch login
+
+    setFormMessage(loginForm, "error", "Invalid username/password combination");
+  });
+
+document.querySelectorAll(".form__input").forEach(inputElement => {
+  inputElement.addEventListener("blur", e => {
+    if (e.target.id === "signupUsername" && e.target.value.length > 0 && e.target.value.length < 8) {
+      setInputError(inputElement, "Username must be at least 8 characters in length");
     }
+  });
+inputElement.addEventListener("input", e => {
+  clearInputError(inputElement);
+    });
   });
 });
