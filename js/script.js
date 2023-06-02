@@ -19,6 +19,7 @@ function clearInputError(inputElement) {
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.querySelector("#login");
   const createAccountForm = document.querySelector("#createAccount");
+  const homePageForm = document.querySelector("#homePage");
 
   document.querySelector("#linkCreateAccount").addEventListener("click", e => {
     e.preventDefault();
@@ -35,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loginForm.addEventListener("submit", e => {
     e.preventDefault();
+    loginForm.classList.remove("form--hidden");
+    homePageForm.classList.add("form--hidden");
 
     // Perform your AJAX/Fetch login
 
