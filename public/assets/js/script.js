@@ -30,16 +30,33 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     loginForm.classList.remove("form--hidden");
     createAccountForm.classList.add("form--hidden");
-    
   });
 
   loginForm.addEventListener("submit", e => {
-    e.preventDefault();
-
+    e.preventDefault(); // Prevent the default form submission
+  
     // Perform your AJAX/Fetch login
-
-    setFormMessage(loginForm, "error", "Invalid username/password combination");
+    fetch('/login', {
+      method: 'POST',
+      body: new FormData(loginForm)
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Process the login response
+        if (data.success) {
+          // Redirect the user to the homepage or perform other actions for successful login
+          window.location.href = "/public/homepage.html";
+        } else {
+          // Show an error message for unsuccessful login
+          setFormMessage(loginForm, "error", "Invalid username/password combination");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        // Handle any errors that occur during the fetch request, if needed
+      });
   });
+  
 
 document.querySelectorAll(".form__input").forEach(inputElement => {
   inputElement.addEventListener("blur", e => {
