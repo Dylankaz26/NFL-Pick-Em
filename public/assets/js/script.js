@@ -34,18 +34,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loginForm.addEventListener("submit", e => {
     e.preventDefault(); // Prevent the default form submission
-  
+  console.log('Login form submitted');
+  console.log('Username:', document.getElementById('login_username').value);
+  console.log('Password:', document.getElementById('login_psw').value);
     // Perform your AJAX/Fetch login
     fetch('/login', {
       method: 'POST',
-      body: new FormData(loginForm)
+      body: JSON.stringify({
+        username: document.getElementById('login_username').value,
+        password: document.getElementById('login_psw').value
+    }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
     })
       .then(response => response.json())
-      .then(data => {
+      .then((data) => {
+        console.log('Success:', data);
         // Process the login response
         if (data.success) {
           // Redirect the user to the homepage or perform other actions for successful login
-          window.location.href = "/public/homepage.html";
+          window.location.href = "/homepage.html";
         } else {
           // Show an error message for unsuccessful login
           setFormMessage(loginForm, "error", "Invalid username/password combination");
@@ -55,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error('Error:', error);
         // Handle any errors that occur during the fetch request, if needed
       });
-  });
   
 
 document.querySelectorAll(".form__input").forEach(inputElement => {
@@ -68,4 +76,5 @@ inputElement.addEventListener("input", e => {
   clearInputError(inputElement);
     });
   });
+});
 });
