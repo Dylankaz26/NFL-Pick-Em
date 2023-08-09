@@ -190,6 +190,7 @@ td {
     font-size: 40px;
     color: #fce138;
     font-weight: bolder;
+    text-align: center;
 }
 
 .draft-list ol [
