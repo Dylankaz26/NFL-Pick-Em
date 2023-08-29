@@ -193,9 +193,9 @@ td {
     text-align: center;
 }
 
-.draft-list ol {
+.draft-list ol [
     margin: 5px;
     padding: 5px 10px;
     border: 1px solid #ccc;
     background-color: #f8f8f8;
-}
+]
