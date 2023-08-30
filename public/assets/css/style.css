@@ -200,15 +200,6 @@ td {
     text-align: center;
 }
 
-
-@media (max-width: 768px) {
-    /* Styles for screens up to 768px wide (typical tablet and mobile landscape) */
-}
-
-@media (max-width: 576px) {
-    /* Styles for screens up to 576px wide (typical mobile portrait) */
-}
-
 .draft-order {
     display: flex;
     justify-content: center;
